@@ -1,6 +1,6 @@
 # Entrez: provides access to the NCBI's Entrez utilities
 # SeqIO: allows parsing and manipulating sequence
-from Bio import Entrez, SeqIO 
+from Bio import Entrez, SeqIO, Medline
 Entrez.email = 'vonjirabe40@gmail.com'
 
 # to search the nucleotide database for records matching the given criteria
@@ -15,8 +15,7 @@ rec_list = Entrez.read(handle)
 # with retmax parameter set to the total count to retrieve all the records.
 if rec_list['RetMax'] < rec_list['Count']:
     handle = Entrez.esearch(db='nucleotide', term='CRT [Gene Name] AND "Plasmodium falciparum"[Organism]',
-                         
-retmax=rec_list['Count'])
+                            retmax = rec_list['Count'])
 rec_list = Entrez.read(handle)
 
 # This line extracts the list of record identifiers (IDs) from the search results, which will be used
@@ -78,6 +77,8 @@ sequence = rec.seq
 # fetched records. It prints information about genes and exons, as well as any other features that are not of 
 # the gene or exon type. It also prints the annotations associated with the record and extracts the sequence 
 # for further use.
+
+
 
 
 
